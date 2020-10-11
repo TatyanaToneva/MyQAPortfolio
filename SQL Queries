@@ -1,0 +1,51 @@
+# 1. Брой на потребители
+select count(id)from users;
+
+# 2. Най-стария потребител
+select  username, birthdate from users order by birthdate asc;
+
+# 3. Най-младия потребител
+select username,birthdate from users order by birthdate desc;
+
+#4. Колко юзъра са регистрирани с мейли от abv и колко от gmail и колко 
+#с различни от двата
+select count(email)from users where email like '%abv%';
+select count(email)from users where email like '%gmail%';
+select count(email) from users where email not like'%abv%' or '%gmail%';
+
+# 5. Кои юзъри са banned
+select username,isbanned from users where isbanned=1;
+
+# 6. Изкарайте всички потребители от базата като ги наредите по име в азбучен ред и дата на раждане
+# (от най-младия към най-възрастния).
+select username,birthdate from users  order by username asc;
+select username,birthdate from users  order by username and birthdate asc;
+
+# 7.Изкарайте всички потребители от базата, на които потребителското име започва с a
+select username from users where username like'a%';
+
+# 8. Изкарайте всички потребители от базата, които съдържат а в 
+# username името си
+select username from users where username like'%a%';
+
+# 9. Изкарайте всички потребители от базата, чието име се състои от 2 имена
+select * from users where username like ('%' '%');
+
+# 10. Регистрирайте 1 юзър през UI-а и го забранете след това от базата
+update users set username='1' where username='Tatyana4';
+
+select * from posts;
+select count poststatus from users;
+
+# 12. Брой на всички постове групирани по статуса на post-a
+select * from posts order by poststatus;
+
+# 20. Покажете най-стария пост. Може да използвате order или с aggregate function.
+select createdAt from posts order by createdat asc;
+
+# 21. Покажете най-новия пост. Може с order или с aggregate function.
+select createdAt from posts order by createdat desc;
+
+# 22. Покажете всички постове с празен caption.
+select caption from posts where caption like '!';
+select caption from posts where caption=' ';
