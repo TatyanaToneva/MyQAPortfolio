@@ -40,6 +40,22 @@ select count poststatus from users;
 # 12. Брой на всички постове групирани по статуса на post-a
 select * from posts order by poststatus;
 
+# 13. Намерете поста/овете с най-къс caption.
+select caption from posts order by caption asc;
+
+# 14. Покажете поста с най-дълъг caption,
+select min(caption) as shortescaption from posts;
+select caption from posts order by caption desc;
+select max(caption) as longestcaption from posts;
+
+# 15. Кой потребител има най-много постове. 
+select (username.users) from users, count(posts.userid) from posts left join (username.users) on (posts.userid) group by 
+post.userid desc;
+
+# 16.Кои потребители имат най-малко постове. 
+select (username.users) from users, count posts.userid) from posts right join on posts.userid=username.users;
+select * from posts order by poststatus;
+
 # 20. Покажете най-стария пост. Може да използвате order или с aggregate function.
 select createdAt from posts order by createdat asc;
 
