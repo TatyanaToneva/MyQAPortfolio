@@ -12,7 +12,7 @@ public class ZadachaVtora {
         double num2 = sc.nextDouble();
         System.out.print("The third number is:  ");
         double num3 = sc.nextDouble();
-        System.out.print("The average value is " + average(num1, num2, num3)+"\n" );
+        System.out.print("The average value is " + average(num1, num2, num3)+"\3" );
     }
  
   public static double averageNumber(double num1, double num2, double num3)
