@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "4ac155f4-9bf3-4b34-8789-33000329eb44",
+		"name": "Comments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Comments",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkzMDIyOCwiZXhwIjoxNjA2OTMzODI4fQ.awUQfEYP90h8tGoPZlQ9ADCVOB11Lx31RiLM7SzM1TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/posts{2}/comments?postId=3",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"posts{2}",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "postId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{}token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "09f98121-efad-4437-8128-d6448989c22e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a6c5572e-3611-4ff5-88a1-c255be5c93e1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

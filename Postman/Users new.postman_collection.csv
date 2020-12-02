@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "1bdf7afd-06a5-4ce9-af6f-5e39e1f484ca",
+		"name": "Users new",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a37abd60-0f76-43f3-a471-f24ff8f97370",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"\r",
+							"    \r",
+							"    pm.test(\"Your test name\", function () {\r",
+							"        var jsonData = pm.response.json();\r",
+							"        pm.expect(jsonData.value).to.eql(100);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Tatyana8\",\r\n  \"email\": \"jfjfjf@anana.com\",\r\n  \"birthDate\": \"14.10.2021\",\r\n  \"password\": \"Tatyana7\",\r\n  \"publicInfo\": \"Hello Sunshine!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fd01b11-9f9d-43a4-ad2d-c8dfacb5bacb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Set token dynamicly\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"   pm.environment.set(\"token\", \"jsonData.token\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usernameOrEmail\": \"Tatyana10\",\r\n  \"password\": \"Tatyana7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users/login",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b425aae9-44f7-421f-a12e-f22a4c934430",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkyNzg0OSwiZXhwIjoxNjA2OTMxNDQ5fQ.-zKlnfdGY8ZKwhW5JUdHhaEH6sgNKy-CWgC8iFmesfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Tatyana7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9df8105c-e1a4-4f78-907e-90465491d189",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkyNzg0OSwiZXhwIjoxNjA2OTMxNDQ5fQ.-zKlnfdGY8ZKwhW5JUdHhaEH6sgNKy-CWgC8iFmesfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"Tatyana7\",\r\n  \"email\": \"klklk@fafa.com\",\r\n  \"birthDate\": \"10.12.1977\",\r\n  \"password\": \"Tatana7\",\r\n  \"publicInfo\": \":_\",\r\n  \"profilePicUrl\": \"https://i.imgur.com/u62Rlx8.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserByID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU1LCJ1c2VybmFtZSI6IlRhdHlhbmE3Iiwicm9sZXMiOlt7ImlkIjoyLCJyb2xlIjoxfV0sImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNjA2MDg4ODkyLCJleHAiOjE2MDYwOTI0OTJ9.JiB7BS90HBC_OvJBPG1rWuU2y3kuCWwcht2fwVATb1s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"455\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users/455",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users",
+						"455"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Follow user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b07bae3a-3786-4c2f-9fed-9f69dc7dfea0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU1LCJ1c2VybmFtZSI6IlRhdHlhbmE3Iiwicm9sZXMiOlt7ImlkIjoyLCJyb2xlIjoxfV0sImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNjA2MDg4ODkyLCJleHAiOjE2MDYwOTI0OTJ9.JiB7BS90HBC_OvJBPG1rWuU2y3kuCWwcht2fwVATb1s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"userId\": \"120\",\r\n    \"action\": \"followUser\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users/120",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users",
+						"120"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ban status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a4d8e8d8-2d37-4358-bc99-aa368658fdf9",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU1LCJ1c2VybmFtZSI6IlRhdHlhbmE3Iiwicm9sZXMiOlt7ImlkIjoyLCJyb2xlIjoxfV0sImlzQmFubmVkIjpmYWxzZSwiaWF0IjoxNjA2MDg4ODkyLCJleHAiOjE2MDYwOTI0OTJ9.JiB7BS90HBC_OvJBPG1rWuU2y3kuCWwcht2fwVATb1s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"isBanned\": true,\r\n  \"description\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users/310/banstatus",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users",
+						"310",
+						"banstatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkzMDIyOCwiZXhwIjoxNjA2OTMzODI4fQ.awUQfEYP90h8tGoPZlQ9ADCVOB11Lx31RiLM7SzM1TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://161.35.202.130:3100/users/logout",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user by text",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkzMDIyOCwiZXhwIjoxNjA2OTMzODI4fQ.awUQfEYP90h8tGoPZlQ9ADCVOB11Lx31RiLM7SzM1TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/users?q=Tatyana",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Tatyana"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

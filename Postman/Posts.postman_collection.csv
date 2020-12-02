@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "29a4d8b9-9674-498d-83d9-49c9f13a8fa4",
+		"name": "Posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkyNzg0OSwiZXhwIjoxNjA2OTMxNDQ5fQ.-zKlnfdGY8ZKwhW5JUdHhaEH6sgNKy-CWgC8iFmesfE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 455,\r\n    \"caption\": \".\",\r\n    \"coverUrl https\":\"//i.imgur.com//k3E9UTx.jpg\",\r\n    \"postStatus\": \"public\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/posts",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get public post",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkzMDIyOCwiZXhwIjoxNjA2OTMzODI4fQ.awUQfEYP90h8tGoPZlQ9ADCVOB11Lx31RiLM7SzM1TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/posts/public?take=7&skip=0",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"posts",
+						"public"
+					],
+					"query": [
+						{
+							"key": "take",
+							"value": "7"
+						},
+						{
+							"key": "skip",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get post",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkzMDIyOCwiZXhwIjoxNjA2OTMzODI4fQ.awUQfEYP90h8tGoPZlQ9ADCVOB11Lx31RiLM7SzM1TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/posts?take=12&skip=2",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "take",
+							"value": "12"
+						},
+						{
+							"key": "skip",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get post by ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkzMDIyOCwiZXhwIjoxNjA2OTMzODI4fQ.awUQfEYP90h8tGoPZlQ9ADCVOB11Lx31RiLM7SzM1TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/posts/{2}?id=2",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"posts",
+						"{2}"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete post by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDU5LCJ1c2VybmFtZSI6IlRhdHlhbmExMCIsInJvbGVzIjpbeyJpZCI6Miwicm9sZSI6MX1dLCJpc0Jhbm5lZCI6ZmFsc2UsImlhdCI6MTYwNjkzMDIyOCwiZXhwIjoxNjA2OTMzODI4fQ.awUQfEYP90h8tGoPZlQ9ADCVOB11Lx31RiLM7SzM1TA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://161.35.202.130:3100/posts/{460}?postId=460",
+					"protocol": "http",
+					"host": [
+						"161",
+						"35",
+						"202",
+						"130"
+					],
+					"port": "3100",
+					"path": [
+						"posts",
+						"{460}"
+					],
+					"query": [
+						{
+							"key": "postId",
+							"value": "460"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{token}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0693cb75-3830-4c17-88a1-33f402e2003f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "fbf5e680-65f3-4293-a1af-7353957fc69d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
